@@ -1,10 +1,13 @@
-import { indexHTML } from './index';
+import { PORT } from './env';
+import { indexHTML } from './indexPage';
+import { configureWebsocket } from './websocket';
 
-const express = require('express')
-const path = require('path')
-const PORT = process.env.PORT || 5000
+const express = require('express');
+const app = express();
+const expressWs = require('express-ws')(app);
+const path = require('path');
 
-express()
-  .use(express.static(path.join(__dirname, '../client')))
-  .get('/', (req, res) => res.status(200).send(indexHTML))
-  .listen(PORT, () => console.log(`Listening on ${ PORT }`));
+app.use(express.static(path.join(__dirname, '../client')))
+app.get('/', (req, res) => res.status(200).send(indexHTML))
+app.ws('/', configureWebsocket);
+app.listen(PORT, () => console.log(`Listening on ${ PORT }`));

@@ -1,3 +1,6 @@
+/**
+ * Basic HTML for simple/default game page
+ */
 export const indexHTML = '<!DOCTYPE html>'
     + '<html>'
     + '<head>'
