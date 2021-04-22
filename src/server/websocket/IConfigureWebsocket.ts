@@ -1,0 +1,1 @@
+export type IConfigureWebsocket = (ws: any /* websocket */, req: any /* request */) => void;
