@@ -7,7 +7,8 @@ const clientConfig = {
     module: {
         rules: [
             {
-                test: /src(\/|\\)client(\/|\\).*\.(ts|js)x?$/,
+                test: /\.(ts|js)x?$/,
+                exclude: ['/node_modules/'],
                 use: {
                     loader: 'babel-loader'
                 }
@@ -30,7 +31,8 @@ const serverConfig = {
     module: {
         rules: [
             {
-                test: /src(\/|\\)server(\/|\\).*\.(ts|js)x?$/,
+                test: /\.(ts|js)x?$/,
+                exclude: ['/node_modules/'],
                 use: {
                     loader: 'babel-loader'
                 }
