@@ -2,15 +2,33 @@ import { msgJson } from "../../common/schima";
 import { IPlayer } from "./IPlayer";
 
 export class Player implements IPlayer {
+    constructor() {
+        this.ws = null;
+        this.isClosed = false;
+    }
+
+    ws /* websocket */;
+    isClosed: boolean;
+
     setWebsocket(ws: any): void {
-        throw new Error("Method not implemented.");
+        this._closedCheck();
+        this.ws = ws;
     }
     
     send(json: msgJson): void {
-        throw new Error("Method not implemented.");
+        this._closedCheck();
+        this.ws.send(json);
     }
 
     close(): void {
-        throw new Error("Method not implemented.");
+        this._closedCheck();
+        this.ws.close();
+        this.isClosed = true;
+    }
+
+    _closedCheck(): void {
+        if (this.isClosed) {
+            throw 'ClosedPlayerError: Attempted non-read operation on closed game.'
+        }
     }
 }

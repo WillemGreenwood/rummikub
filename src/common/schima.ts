@@ -1,4 +1,4 @@
-export interface msgJson extends JSON {
+export interface msgJson {
     msgType: string
 };
 

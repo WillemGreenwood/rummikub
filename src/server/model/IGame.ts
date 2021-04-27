@@ -12,6 +12,11 @@ export interface IGame {
     removePlayer(player: IPlayer): boolean;
 
     /**
+     * Returns if no players are in the room.
+     */
+    isEmpty(): boolean;
+
+    /**
      * Send a message to all players.
      */
     send(json: msgJson): void;
@@ -38,7 +43,7 @@ export interface IGame {
     /**
      * Returns if this game is in the list of registered games.
      */
-    getRegistered(): boolean;
+    getIsRegistered(): boolean;
 
     /**
      * Deregister the game (if registered), and close all player connections.
